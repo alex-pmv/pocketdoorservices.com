@@ -8,7 +8,8 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Pocket Door Services - Expert pocket door installation, repair, and maintenance. Serving Orlando, Miami & Fort Myers. Call 954-727-5410." } = Astro.props;
+const { title, description = "Pocket Door Services — expert pocket door installation, repair & maintenance in Orlando, Miami & Fort Myers, FL. 24/7 emergency service. Call (954) 727-5410." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
 <html lang="en">
@@ -16,11 +17,49 @@ const { title, description = "Pocket Door Services - Expert pocket door installa
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalURL.href} />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:site_name" content="Pocket Door Services" />
+    <meta property="og:image" content={new URL('/images/logo.png', Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/images/logo.png', Astro.site).href} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Pocket Door Services",
+      "description": "Expert pocket door installation, repair, and maintenance services in Orlando, Miami, and Fort Myers, FL. 24/7 emergency service available.",
+      "url": "https://pocketdoorservices.com",
+      "telephone": "+1-954-727-5410",
+      "image": "https://pocketdoorservices.com/images/logo.png",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Orlando",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Orlando" },
+        { "@type": "City", "name": "Miami" },
+        { "@type": "City", "name": "Fort Myers" }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": []
+    })} />
   </head>
   <body class="font-body text-gray-800 antialiased">
     <Header />
