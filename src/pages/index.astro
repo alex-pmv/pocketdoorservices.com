@@ -124,8 +124,10 @@ import services from '../data/services.json';
   </section>
 
   <!-- Emergency -->
-  <section class="py-16 bg-primary text-white text-center">
-    <div class="max-w-4xl mx-auto px-4">
+  <section class="relative py-20 text-white text-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/services/hero.webp')"></div>
+    <div class="absolute inset-0 bg-primary/90"></div>
+    <div class="relative max-w-4xl mx-auto px-4">
       <h2 class="font-heading text-4xl md:text-5xl tracking-wide mb-4">24/7 Pocket Door Emergency Services</h2>
       <p class="text-gray-300 leading-relaxed mb-8">
         We offer reliable pocket door emergency services to address urgent repairs and get your doors back on track quickly. Our skilled technicians are equipped to handle any pocket door project.
@@ -155,14 +157,17 @@ import services from '../data/services.json';
       <h2 class="font-heading text-4xl md:text-5xl text-center tracking-wide text-primary mb-10">Our Pocket Door Services</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s) => (
-          <a href={`/service/${s.slug}`} class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-border/30 block">
+          <a href={`/service/${s.slug}`} class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-border/30 block">
             <div class="aspect-[4/3] overflow-hidden">
               <img src={s.image} alt={`${s.name} service in Orlando, Miami & Fort Myers`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
             </div>
             <div class="p-5">
               <h3 class="font-heading text-2xl tracking-wide text-primary mb-2">{s.name}</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">{s.description}</p>
-              <p class="text-accent text-sm mt-3">Learn More →</p>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">{s.description}</p>
+              <span class="inline-flex items-center gap-1 text-accent font-heading text-sm tracking-wide group-hover:gap-2 transition-all duration-300">
+                LEARN MORE
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
             </div>
           </a>
         ))}

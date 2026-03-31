@@ -4,6 +4,19 @@ const navItems = [
   { name: "About Us", href: "/about-us" },
   { name: "Contact", href: "/contact" },
 ];
+const serviceDropdown = [
+  { name: "Roller Replacement & Frame Repair", href: "/service/roller-replacement-and-frame-repair" },
+  { name: "Lock Repair", href: "/service/lock-repair" },
+  { name: "Hinge Repair/Replacement", href: "/service/hinge-repair-replacement" },
+  { name: "Commercial Door Installation", href: "/service/commercial-door-installation" },
+  { name: "Commercial Door Repair", href: "/service/commercial-door-repair" },
+  { name: "Commercial Door Lock Services", href: "/service/commercial-door-lock-services" },
+];
+const locationDropdown = [
+  { name: "Orlando", href: "/location/pocket-door-services-orlando" },
+  { name: "Miami", href: "/location/pocket-door-services-miami" },
+  { name: "Fort Myers", href: "/location/fort-myers" },
+];
 ---
 
 <div class="bg-primary text-white text-sm py-2">
@@ -22,6 +35,32 @@ const navItems = [
       {navItems.map((item) => (
         <a href={item.href} class="font-heading text-lg tracking-wide text-primary hover:text-accent py-2">{item.name.toUpperCase()}</a>
       ))}
+      <div class="relative group">
+        <button class="font-heading text-lg tracking-wide text-primary hover:text-accent py-2 inline-flex items-center gap-1">
+          SERVICES
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </button>
+        <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div class="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[280px]">
+            {serviceDropdown.map((s) => (
+              <a href={s.href} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent transition-colors">{s.name}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="relative group">
+        <button class="font-heading text-lg tracking-wide text-primary hover:text-accent py-2 inline-flex items-center gap-1">
+          LOCATIONS
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </button>
+        <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div class="bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[200px]">
+            {locationDropdown.map((l) => (
+              <a href={l.href} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent transition-colors">{l.name}</a>
+            ))}
+          </div>
+        </div>
+      </div>
     </nav>
     <a href="tel:9547275410" class="hidden lg:inline-flex bg-accent text-white font-heading text-lg tracking-wide px-6 py-3 rounded hover:bg-blue-700 transition-colors" aria-label="Call now for a free estimate">CALL NOW</a>
     <button id="mobile-menu-btn" class="lg:hidden p-2" aria-label="Open navigation menu">
@@ -33,6 +72,22 @@ const navItems = [
       {navItems.map((item) => (
         <a href={item.href} class="block font-heading text-lg tracking-wide text-primary py-2">{item.name.toUpperCase()}</a>
       ))}
+      <div>
+        <p class="font-heading text-lg tracking-wide text-primary py-2">SERVICES</p>
+        <div class="pl-4 space-y-1">
+          {serviceDropdown.map((s) => (
+            <a href={s.href} class="block text-sm text-gray-600 py-1 hover:text-accent">{s.name}</a>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p class="font-heading text-lg tracking-wide text-primary py-2">LOCATIONS</p>
+        <div class="pl-4 space-y-1">
+          {locationDropdown.map((l) => (
+            <a href={l.href} class="block text-sm text-gray-600 py-1 hover:text-accent">{l.name}</a>
+          ))}
+        </div>
+      </div>
       <a href="tel:9547275410" class="block bg-accent text-white font-heading text-lg tracking-wide px-6 py-3 rounded text-center mt-4">CALL NOW</a>
     </div>
   </div>
